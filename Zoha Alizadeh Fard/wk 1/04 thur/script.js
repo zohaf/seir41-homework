@@ -120,3 +120,28 @@ function isObtuse(sideA, sideB, sideC){
 isObtuse(triangle3.sideA, triangle3.sideB, triangle3.sideC);
 isObtuse(triangle2.sideA, triangle2.sideB, triangle2.sideC);
 isObtuse(triangle1.sideA, triangle1.sideB, triangle1.sideC);
+
+
+
+// # The Cash Register
+
+// Write a function called cashRegister that takes a shopping cart object. The object contains item names and prices (itemName: itemPrice). The function should return the total price of the shopping cart.
+// Example
+
+// ```
+// // Input
+// const cartForParty = {  
+//   banana: "1.25",
+//   handkerchief: ".99",
+//   Tshirt: "25.01",
+//   apple: "0.60",
+//   nalgene: "10.34",
+//   proteinShake: "22.36"
+// };
+
+// // Output
+// cashRegister(cartForParty)); // 60.55
+// ```
+
+parseFloat();
+arrayOfValue = object.value();

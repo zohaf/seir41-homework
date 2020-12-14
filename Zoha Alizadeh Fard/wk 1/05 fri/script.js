@@ -1,51 +1,155 @@
-// # Warmup - Raindrops
+// # MTA Lab
 
-// Write a Javascript program that will take a number (eg 28 or 1755 or 9, etc) and output the following:
+// ## Objectives:
+// * Apply your knowledge of Javascript to solve a real world problem.
+// * Get really good at array manipulation.
 
-// If the number contains 3 as a factor, output 'Pling'.
-// If the number contains 5 as a factor, output 'Plang'.
-// If the number contains 7 as a factor, output 'Plong'.
-// If the number does not contain 3, 5, or 7 as a factor, output the number as a string.
+// #### Activity
+// * Create a program that models a simple subway system.
 
-
-
-const factors = function(n) {
- var num_factors = [], i;
- 
- for (i = 1; i <= Math.floor(Math.sqrt(n)); i += 1)
-  if (n % i === 0)
-  {
-   num_factors.push(i);
-   if (n / i !== i)
-    num_factors.push(n / i);
-  }
- num_factors.sort(function(x, y)
-   {
-     return x - y;});  // numeric sort
-     return num_factors;
-    }
+// * The program takes the line and stop that a user is getting on at and the line
+// and stop that user is getting off at and prints the journey and the total number of stops for the trip in the console:
 
 
-console.log(factors(15));  // [1,3,5,15] 
-// console.log(factors(16));  // [1,2,4,8,16] 
-// console.log(factors(17));  // [1,17]
+//on
+//off
+//journey [array of stops] - that includes the on and the off stop & the array length - total number of stops
 
-const raindrops = function () {
-    if (factors.includes(3)) {
-        return "Pling";
-    };
-    
 
+
+const lineN = {
+  name: 'N line',
+  stops: [
+    'Times Square', 
+    '34th',
+    '28th',
+    '23rd',
+    'Union Square',
+    '8th',
+  ] 
 };
 
-console.log(raindrops);
+// function tripAdvisor (stopOn, stopOff){};  
+//stopOn = ('34th') = 2;
 
 
-// ### Examples
+let stopNumb;
 
-// 28 has 7 as a factor.
-// In raindrop-speak, this would be a simple "Plong".
-// 1755 has 3 and 5 as factors.
-// In raindrop-speak, this would be a "PlingPlang".
-// 34 has neither 3, 5 nor 7 as a factor.
-// Raindrop-speak doesn't know what to make of that, so it just goes with the straightforward "34".
+function getStop(stopName) {
+
+
+  for (let i = 0; i < lineN.stops.length; i++) {
+  
+if(stopName === lineN.stops[i]) {
+  return stopNumb = i+1
+
+}
+}
+};
+
+const stopOn = getStop('34th');
+const stopOff = getStop('23rd');
+
+console.log(stopOn);
+
+console.log(stopOff);
+
+// "You must travel through the following stops on the ${lineN.name}: stopOn ${lineN.stops} 
+//34th, 28th, 23rd, Union Square." 
+
+
+
+
+
+//if(stopOn === lineN.stops[i]){
+
+
+//input:
+// const stopOn = // 34th
+// const stopOff = stopFactory('N line', '28th'); // lineN[2]
+
+
+// const lineL = [
+//   '8th', 
+//   '6th',
+//   'Union Square',
+//   '3rd',
+//   '1st',
+// ];
+
+// const line6 = [
+//   'grand Central', 
+//   '33rd',
+//   '23rd',
+//   'Union Square',
+//   'Astor Place',
+// ];
+
+// const allLines = [lineN, lineL, line6];
+
+// // output
+
+
+
+// return lineN[i]
+
+
+// "You must travel through the following stops on the ${lineN.name}: stopOn ${lineN.stops} 
+//34th, 28th, 23rd, Union Square." 
+
+
+
+
+
+
+
+
+// "Change at Union Square." 
+
+
+// // "Your journey continues through the following stops: 23rd, 28th, 33rd." listing the array
+// // "7 stops in total." [array length]
+
+
+
+
+// it takes the argument the stop on and the stop off
+
+
+
+//example: stop on: line-N 34th / stop off: line-N 23rd
+
+
+// const stopOn = (lineN[i] || lineL[i] || line6[i]);
+// const stopOff = (lineN[i] || lineL[i] || line6[i]);
+
+// console.log()
+
+
+
+// procedure : 
+//choose the station you are getting on
+//choose the station you are getting off
+
+
+// eg: stopOn('Time Square', 'N line'); stopFactory('Time Square', 'N line')
+// function stopOn (stopFactory.s, stopFactory.l) {
+
+// };
+
+
+
+// function (stopOn, stopOff) {
+//   console.log(`your travel: get on ${stopOn} to ${stopOff}: `)
+// };
+
+
+
+// 
+
+// const stopFactory = function (l, s) {
+//   return {
+//     lineName: l,
+//     stopName: s
+//   };
+// };

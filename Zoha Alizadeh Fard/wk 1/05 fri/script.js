@@ -47,15 +47,21 @@ if(stopName === lineN.stops[i]) {
 }
 };
 
+
 const stopOn = getStop('34th');
 const stopOff = getStop('23rd');
 
-console.log(stopOn);
+
+const stopCounter = stopOff - stopOn;
+Math.abs(stopCounter);
+
+
+console.log(`You must travel from ${stopOn} through the following number of stops: ${stopCounter} on the ${lineN.name}: for ` 
+//34th, 28th, 23rd, Union Square." 
+
+);
 
 console.log(stopOff);
-
-// "You must travel through the following stops on the ${lineN.name}: stopOn ${lineN.stops} 
-//34th, 28th, 23rd, Union Square." 
 
 
 
@@ -90,12 +96,6 @@ console.log(stopOff);
 // // output
 
 
-
-// return lineN[i]
-
-
-// "You must travel through the following stops on the ${lineN.name}: stopOn ${lineN.stops} 
-//34th, 28th, 23rd, Union Square." 
 
 
 

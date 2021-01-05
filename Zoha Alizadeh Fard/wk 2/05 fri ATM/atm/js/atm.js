@@ -1,142 +1,70 @@
-//check account
-
-// let totalCheck = 0;
-
-// function deposit(value) {
-//       totalCheck += value //addition assignment
-// };
-// function withdraw(value) {
-//      totalCheck -= value //substitution assignment
-// };
-
-// deposit(15)
-// withdraw(5)
-
-// console.log(totalSavings);
-
-
-$(document).ready(function(){
-
-
-
-//saving account
-
-//jquery
-
-let savingsAmount = $('#savings-amount').val();
-let savingsBalance = $('#savings-balance').val();
-
-//
-
-function deposit(savingsAmount) {
-      savingsBalance += savingsAmount //addition assignment
-};
-function withdraw(savingsAmount) {
-     savingsBalance -= savingsAmount //substitution assignment
-};
-
-deposit(15)
-withdraw(5)
-
-console.log('khastam kardi');
-
-//
-
-$("#savings-deposit").click(deposit)
-
-//$("#savings-deposit").click(deposit);
-// $('#savings-withdraw').click(withdraw);
-
-});
-
-
-
-
-//total money in the bank
-// const totalMoney = totalCheck + totalSavings;
-
-
-
-//
-const checkingAmount = $('#checking-amount');
-
-
-
-// dec - 53 [1000]
-// jan - feb - mar - 53 [1300 | 1400 | 1500 | 1600 ]
-// mar - 52.5 [1700 | 1200]
-// apr - 51.5 [1200 | 1100]
-// may - 50 [1100 | 1300]
-// jun - jul - aug - 50 [1300 | 1400 | 1500 | 1600 ]
-
-// calculator
-
-let num1 = "";
-let num2 = "";
-let operator = "";
-let total = "";
-
-$(document).ready(function() {
-    $('button').on('click', function(e) {
-        let btn = e.target.innerHTML,
-        if (btn >= '0' && btn <= '9'){
-            handleOperator(btn);
-
-        }
-    });
-
-
-function handleNumber(num) {
-    if (num1 === '') {
-        num1 = num; 
-    } else {
-        num2 = num;
-    } displayButton(num);
-};
-
-function handleOperator(oper) {
-    if (operator === '') {
-        operator = oper;
-
-    } else {
-        handleTotal();
-        operator = oper;
+const checkForZero = function () {
+    $('.zero').removeClass('zero');
+  
+    const checkingBalance = + $('#checking-balance').text().slice(1);
+    if (checkingBalance <= 0) {
+      $('#checking-balance').addClass('zero');
     }
-};
-
-function handleTotal() {
-    switch(operator) {
-        case '+': 
-            total = +num1 + +num2;
-            displayButton(total);
-
-        break;
-        case '-':
-            total = +num1 - +num2;
-            displayButton(total);
-
-        break;
-        case '/':
-            total = +num1 / +num2;
-            displayButton(total);
-
-        break;
-        case '*':
-            total = +num1 * +num2;
-            displayButton(total);
-        
-        break;
-        } updateVariables();
-};
-
-function displayButton(btn) {
-    $('.calc-result-input').text(btn);
-};
-
-function updateVariables() {
-    num1 = total; num2 = '';
-};
-
-
-
-});
+  
+    const savingsBalance = + $('#savings-balance').text().slice(1);
+    if (savingsBalance <= 0) {
+      $('#savings-balance').addClass('zero');
+    }
+  };
+  
+  $(document).ready(function () {
+    checkForZero();
+    $('#checking-deposit').on('click', function () {
+      const deposit = + $('#checking-amount').val();
+      const currentBalance = + $('#checking-balance').text().slice(1);
+      const newBalance = currentBalance + deposit;
+      $('#checking-balance').text('$' + newBalance); // setter
+      checkForZero();
+    });
+  
+    $('#checking-withdraw').on('click', function () {
+      const amount = + $('#checking-amount').val();
+      const currentBalance = + $('#checking-balance').text().slice(1);
+  
+      const otherBalance = + $('#savings-balance').text().slice(1);
+      const totalBalance = currentBalance + otherBalance;
+  
+      const newBalance = currentBalance - amount;
+  
+      if (newBalance >= 0) {
+        $('#checking-balance').text('$' + newBalance);
+      } else if (amount <= totalBalance) {
+        $('#checking-balance').text('$0');
+        // Here, newBalance is the negative money that didn't exist in this account.
+        $('#savings-balance').text( '$' + (otherBalance + newBalance) );
+      }
+      checkForZero();
+    });
+  
+    $('#savings-deposit').on('click', function () {
+      const deposit = + $('#savings-amount').val();
+      const currentBalance = + $('#savings-balance').text().slice(1);
+      const newBalance = currentBalance + deposit;
+      $('#savings-balance').text('$' + newBalance); // setter
+      checkForZero();
+    });
+  
+    $('#savings-withdraw').on('click', function () {
+      const amount = + $('#savings-amount').val();
+      const currentBalance = + $('#savings-balance').text().slice(1);
+  
+      const otherBalance = + $('#checking-balance').text().slice(1);
+      const totalBalance = currentBalance + otherBalance;
+  
+      const newBalance = currentBalance - amount;
+  
+      if (newBalance >= 0) {
+        $('#savings-balance').text('$' + newBalance);
+      } else if (amount <= totalBalance) {
+        $('#savings-balance').text('$0');
+        // Here, newBalance is the negative money that didn't exist in this account.
+        $('#checking-balance').text( '$' + (otherBalance + newBalance) );
+      }
+      checkForZero();
+    });
+  });

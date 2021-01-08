@@ -5,46 +5,66 @@
 }
 
 body {
-  color: #3157A2;
+  color: #F89849;
+  font-family: 'Roboto', sans-serif;
   display: flex;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .container {
-  background:#F89849;
-  margin: 50px;
+  background: blue;
+  margin: 20px;
   padding: 50px;
   border-radius: 25px;
 }
 
 .title {
   text-align: center;
+    font-family: 'Alfa Slab One', cursive;
+
 }
 
 .title span {
   color:white;
 }
 
-.status-action {
+.update-bar {
   display: flex;
-  margin-top: 25px;
-  font-size: 25px;
-  justify-content: space-around;
+  color:#F89849;
+  margin-top: 0;
+  font-size: 20px;
+  font-weight: lighter;
+  justify-content: space-between;
+  width: 400px;
   height: 30px; 
-  text-decoration: underline;
+  font-family: 'Alfa Slab One';
+  font-weight:bold;
+
+ 
 }
 
 .status span {
-  color: white;
+  color: #21e221;;
+}
+
+.status .winner {
+  color: #F90103;
 }
 
 .reset {
   cursor: pointer;
+   
 }
 
 .reset:hover {
-  color: white;
+  color: blue;
+  font-size: 24px;
+  font-weight: 300;
+  
+  transition:10sms;
+  transform-origin:bottom;
 }
 
 .game-grid {
@@ -57,7 +77,7 @@ body {
 }
 
 .game-cell {
-  background:#F89849;
+  background: blue;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,10 +99,16 @@ body {
 
 .o::after {
   content: '○';
-  color: #F2EBD3;
-  font-size: 225px;
+  color: #21e221;
+  font-size: 205px;
+  align-items: center;
+  justify-content: center;
 }
 
 .won::after {
-  color: #F90103;
+  transition: 7ms;
+  transform-origin: center;
+  font-size: 270px;
+ 
+
 }

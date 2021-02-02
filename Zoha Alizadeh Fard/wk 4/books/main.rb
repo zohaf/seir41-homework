@@ -1,20 +1,19 @@
-require "sinatra"
-require "sinatra/reloader"
-require "pry"
+require 'sinatra'
+require 'sinatra/reloader'
 require 'httparty'
 
-get '/' do # root or 'homepage'
+get '/' do
   erb :home
 end
 
 get '/result' do
-  @info = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=title:#{params[:book]}")
-  @img = @info["items"][0]["volumeInfo"]["imageLinks"]["thumbnail"]
-  @title = @info["items"][0]["volumeInfo"]["title"]
-  @author = @info["items"][0]["volumeInfo"]["authors"].join(', ')
-  @publisher = @info["items"][0]["volumeInfo"]["publisher"]
-  @descr = @info["items"][0]["volumeInfo"]["description"]
+  @name = params[:name]
+  url = "https://www.googleapis.com/books/v1/volumes?q=title:#{ @name }"
+  @info = HTTParty.get url
+  @cover = @info["items"].first["volumeInfo"]["imageLinks"]["thumbnail"]
 
-
+  @author = @info['items'].first['volumeInfo']['authors'].join(', ')
+  @title = @info['items'].first['volumeInfo']['title']
+  @description = @info['items'].first['volumeInfo']['description']
   erb :result
 end

@@ -23,7 +23,9 @@ if(state.requestInProgress){
     page: state.nextPage++,
   })
     .done(showImages)
-    .done(function (info) {});
+    .done(function (info) {
+      state.requestInProgress = false
+    });
 };
 
 // show iamges
